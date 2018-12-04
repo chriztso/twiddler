@@ -12,7 +12,7 @@
         font-weight: bold;
         font-family: "Arial";
         line-height: 2;
-        text-align: center;
+        text-align: left;
     }
     h1{
         font-family: "Helvetica Neue";
@@ -24,8 +24,12 @@
         width: 25;
          background-color: yellow;
          border: 1px solid black;
-         padding: 10px;
+         padding: 0px 30px;
          
+    }
+    h6{
+        font-size: 20px;
+        color: blue;
     }
     input{
         border-radius: 5px;
@@ -34,7 +38,10 @@
         background-color: aqua;
     }
     div{
-        color:white;
+        color:black;
+        line-height: 2;
+        border: 2px solid white
+        
     }
    
   
@@ -60,18 +67,22 @@
        
     
 
-        /*var index = streams.home.length - 1;
+        var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
+          var user1 = tweet.user;
+          var $user1 = $('<h6></h6>');
+          $user1.text('@' + user1 + ':');
           var today = new Date();
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + "      " + today);
+          $tweet.text(tweet.message + "      " + today);
+          $user1.appendTo($body);
           $tweet.appendTo($body);
           index -= 1;
-        }*/
+        }
                         
         
-        var index = streams.users.mracus.length - 1;
+        /*var index = streams.users.mracus.length - 1;
         while(index >= 0){
         var tweet = streams.users.mracus[index];
         var $tweet = $('<div></div>');
@@ -79,8 +90,17 @@
         $tweet.text('@' + tweet.user + ': ' + tweet.message + "      " + today);
         $tweet.appendTo($body);
         index -= 1;
-        }
+        }*/
         
+        /*var index = streams.users.shawndrost.length - 1;
+        while(index >= 0){
+        var tweet = streams.users.shawndrost[index];
+        var $tweet = $('<div></div>');
+        var today = new Date();
+        $tweet.text('@' + tweet.user + ': ' + tweet.message + "      " + today);
+        $tweet.appendTo($body);
+        index -= 1;
+        }*/
                         
                         
                
