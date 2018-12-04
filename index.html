@@ -11,47 +11,67 @@
             font-weight: bold;
             color: white;
         }
-    index{
-        color: red;
+    body{
+        background-color: lightblue;
+        color: green;
+        font-weight: bold;
+        font-family: "Arial";
+        border: 2px solid black;
+    
     }
+   
+  
+   
     </style>
   </head>
   <body>
-    <script>
+    
+   <script>
 
       $(document).ready(function(){
+        
         var $body = $('body');
         $body.html('');
-        
+       
+         var header1 = "<h1>Twiddler</h1>";
+          $(header1).appendTo($body);
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var today = new Date();
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + today);
           $tweet.appendTo($body);
+                    
           index -= 1;
         }
+               
+       var button = document.createElement("button");
+       button.innerHTML = "Get New Tweets";
                         
-        var button = document.createElement("button");
-        button.innerHTML = "Get New Tweets";
+                        
+       var body = document.getElementsByTagName("body")[0];
+       body.appendChild(button);
                         
                         
-        var body = document.getElementsByTagName("body")[0];
-        body.appendChild(button);
                         
                         
         button.addEventListener ("click", function() {
         location.reload(true);
         });
                         
+                        
         });
+                        
+                                                            
+       
                         
 
 
       
     
     </script>
-   
+    
   </body>
 </html>
