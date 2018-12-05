@@ -62,17 +62,18 @@
          <h2>Home </h2>
         <h2> Moments </h2>
      
-    <button type = "button" onclick = "ready()" > Get new tweets </button>
-    <button type = "button" onclick= "theseTweets()"> Mracus' Tweets </button>
+    <button type = "button" onclick = "location.reload()" > Get new tweets </button>
     <input type="text" placeholder="Search Twitter">
-    
+    <a href="#" onclick="genTweets('mracus')">click me</a>
   
     
 
    <script>
        
        
-       $(document).ready(function (){
+    
+                         
+       function genTweets(username){
       
        var $body = $('body');
                          
@@ -80,6 +81,7 @@
             var tweet = streams.home[i];
             var $tweet = $('<div></div>');
             var user1 = tweet.user;
+            if(user1 === username){
             var $user1 = $('<a href = "#"><h6></h6></a>');
             $user1.text('@' + user1 + ':');
             var today = new Date();
@@ -87,11 +89,12 @@
             $user1.appendTo($body);
             $tweet.appendTo($body);
             }
+        }
         
-        });
+        };
       
      
-      
+     $(document).ready(function(){});
        
     /*
        var index = streams.home.length - 1;
