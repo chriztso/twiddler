@@ -11,7 +11,7 @@
         color: green;
         font-weight: bold;
         font-family: "Arial";
-        line-height: 2;
+        line-height: 1;
         text-align: left;
     }
     h1{
@@ -37,11 +37,17 @@
     button{
         background-color: aqua;
     }
+    button1{
+        background-color: green;
+    }
     div{
         color:black;
         line-height: 2;
         border: 2px solid white
         
+    }
+    a{
+        display: block;
     }
    
   
@@ -56,18 +62,39 @@
          <h2>Home </h2>
         <h2> Moments </h2>
      
-    <button type = "button" onclick = 'location.reload();'> Get new tweets </button>
+    <button type = "button" onclick = "ready()" > Get new tweets </button>
+    <button type = "button" onclick= "theseTweets()"> Mracus' Tweets </button>
     <input type="text" placeholder="Search Twitter">
-   <script>
-
-      $(document).ready(function(){
-        
-        var $body = $('body');
-     
-       
+    
+  
     
 
-        var index = streams.home.length - 1;
+   <script>
+       
+       
+       $(document).ready(function (){
+      
+       var $body = $('body');
+                         
+        for(var i = 0; i < streams.home.length; i++){
+            var tweet = streams.home[i];
+            var $tweet = $('<div></div>');
+            var user1 = tweet.user;
+            var $user1 = $('<a href = "#"><h6></h6></a>');
+            $user1.text('@' + user1 + ':');
+            var today = new Date();
+            $tweet.text(tweet.message + "      " + today);
+            $user1.appendTo($body);
+            $tweet.appendTo($body);
+            }
+        
+        });
+      
+     
+      
+       
+    /*
+       var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
@@ -79,18 +106,27 @@
           $user1.appendTo($body);
           $tweet.appendTo($body);
           index -= 1;
-        }
+          }*/
+         
+        
+        
+          
+    
                         
         
-        /*var index = streams.users.mracus.length - 1;
-        while(index >= 0){
-        var tweet = streams.users.mracus[index];
-        var $tweet = $('<div></div>');
+           
+        
+        /*
+        var index1 = streams.users.mracus.length - 1;
+        while(index1 >= 0){
+        var tweet1 = streams.users.mracus[index1];
+        var $tweet1 = $('<div></div>');
         var today = new Date();
-        $tweet.text('@' + tweet.user + ': ' + tweet.message + "      " + today);
-        $tweet.appendTo($body);
-        index -= 1;
-        }*/
+        $tweet1.text('@' + tweet1.user + ': ' + tweet1.message + "      " + today);
+        index1 -= 1;
+        }
+        
+         });
         
         /*var index = streams.users.shawndrost.length - 1;
         while(index >= 0){
@@ -107,7 +143,7 @@
    
                         
                         
-        });
+       
                         
                                                             
        
