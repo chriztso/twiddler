@@ -30,7 +30,7 @@
          
     }
     h6{
-        font-size: 20px;
+        font-size: 10px;
         color: blue;
     }
     input{
@@ -72,57 +72,101 @@
          <h2>Home </h2>
         <h2> Moments </h2>
      
-    <button type = "button" onclick = "genTweets()" > Get new tweets </button>
+    <button type = "button"> Get new tweets </button>
+   
     <input type="text" placeholder="Search Twitter">
     <!--<a href="#" onclick="genTweets('mracus')">click me</a>-->
-  </div>
+  
   <div id = "tweets"></div>
+  <div id = "shawndrost"></div>
+  <div id = "douglascalhoun"></div>
+  <div id = "sharksforcheap"></div>
    <script>
        
        
+       $(document).ready(function(){
 
+
+        var $body = $('body');
+        var $tweets = $('#tweets');  
                          
+        $('button').click(genTweets1);
+              
+        
+        function genTweets1(){
+          for(var i = 0; i < streams.home.length; i++){
+            var tweetmessage = streams.home[i].message;
+            var user1 = streams.home[i].user;
+            var today = new Date();
+            var $user1 = $('<h6></h6>');
+            $user1.text(user1);
+            var $tweet = $('<div class = "twitters"></div>');
+            $tweet.text(today + ":" + tweetmessage);
+            $tweet.prependTo($tweets);
+             $user1.prependTo($tweets);
+          }
+            $('h6').click(function(){
+                  $tweets.html('');
+              var username1 = ($(this).text());
+              for(var i = 0; i < streams.home.length; i++){
+              var tweetmessage = streams.home[i].message;
+              var user1 = streams.home[i].user;
+              if(user1 === username1){
+              var today = new Date();
+              var $user1 = $('<h6></h6>');
+              $user1.text(user1);
+              var $tweet = $('<div class = "twitters"></div>');
+              $tweet.text(today + ":" + tweetmessage);
+              $tweet.prependTo($tweets);
+              $user1.prependTo($tweets);
+              }
+             } 
+          })
+        }
+        });  
+        
+  
+          
+
+      
+
+      
+       
+         
+/*
+       
+         /*                
        function genTweets(username){
-      
-      
        var $body = $('body');
        var $tweets = $('#tweets');
         if(username === undefined){
             for(var i = 0; i < streams.home.length; i++){
                 var tweet = streams.home[i];
+                //var $tweet = $('<div></div>');
                 var $tweet = $('<div></div>');
                 var user1 = tweet.user;
                 var $user1 = $('<a>');
-                $user1.click(function(){console.log(user1);});
-                $user1.text('@' + user1 + ':');
+                $user1.text(user1);
                 var today = new Date();
                 $tweet.text( today + " " + tweet.message);
                 $tweet.prependTo($tweets);
                 $user1.prependTo($tweets);
                 }
             }
-        else{
-        for(var i = 0; i < streams.home.length; i++){
-            var tweet = streams.home[i];
-            var $tweet = $('<div></div>');
-            var user1 = tweet.user;
-            if(user1 === username){
-            var $user1 = $('<a href = "#"></a>');
-            $user1.text('@' + user1 + ':');
-            var today = new Date();
-            $tweet.text(tweet.message + "      " + today);
-            $user1.appendTo($body);
-            $tweet.appendTo($body);
-            }
-        }
       
-        }
-       };
+       
+   
+   
+   
+   
+   
+   
+
       
      
-     $(document).ready(function(){});
+   
        
-    /*
+    
        var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
@@ -135,7 +179,7 @@
           $user1.appendTo($body);
           $tweet.appendTo($body);
           index -= 1;
-          }*/
+          }
          
         
         
@@ -145,7 +189,7 @@
         
            
         
-        /*
+        
         var index1 = streams.users.mracus.length - 1;
         while(index1 >= 0){
         var tweet1 = streams.users.mracus[index1];
@@ -157,7 +201,7 @@
         
          });
         
-        /*var index = streams.users.shawndrost.length - 1;
+        var index = streams.users.shawndrost.length - 1;
         while(index >= 0){
         var tweet = streams.users.shawndrost[index];
         var $tweet = $('<div></div>');
