@@ -24,15 +24,16 @@
     h2{
         display: inline-block;
         width: 25;
-         background-color: yellow;
+         background-color: black;
          border: 1px solid black;
          padding: 0px 30px;
+         color: white;
          
     }
     h6{
         font-size: 15px;
         color: blue;
-        background-color:white;
+        background-color:lightgreen;
         line-height:2;
         
         margin: 0 auto;
@@ -50,19 +51,33 @@
     div #tweets{
         width: 50%;
         margin: 0 auto;
+
+
     }
-    div .twitters {
+    div:nth-child(odd) .twitters {
         color:black;
         line-height: 2;
         background-color: white;
      
         margin: 0 auto;
         border: 1px solid black;
+        border-radius: 5px;
         
     }
-    div #userprofile{
+     div:nth-child(even) .twitters {
+        color:black;
+        line-height: 2;
+        background-color: white;
+     
+        margin: 0 auto;
+        border: 1px solid black;
+        border-radius: 5px;
+        
+    }
+    div #profile{
         border: 1px solid blue;
-        width: 10%;
+        width: 300px;
+        height: 600px;
         
     }
     div #inputter{
@@ -88,7 +103,8 @@
         height: 30px;
         width: 300px;
     }
-    
+
+   
    
   
    
@@ -107,8 +123,10 @@
    
     <input type="text" placeholder="Search Twitter">
         <div id = "inputter" style= "text-align:center"><input type = "text" id = "textbox" placeholder="What's on your mind?"></div>
-    <div id = "tweets">
-    </div>
+    <!--<div id = "profile">@christso
+    <span>Tweets </span><span> Followers </span><span> Following </span>       
+    </div>  -->  
+    <div id = "tweets"></div>
      
   
  
@@ -123,6 +141,7 @@
 
         var $body = $('body');
         var $tweets = $('#tweets');  
+       
                          
         $('button').click(genTweets1);
               
@@ -131,19 +150,23 @@
           for(var i = 0; i < streams.home.length; i++){
             var tweetmessage = streams.home[i].message;
             var user1 = streams.home[i].user;
-            var today = new Date();
+            var timemade = streams.home[i]["created_at"];
             var $user1 = $('<h6></h6>');
             $user1.text(user1);
             var $tweet = $('<div class = "twitters"></div>');
-            $tweet.text(today + ":" + tweetmessage);
+            $tweet.text(timemade + ' @' + user1 +  ": " + tweetmessage);
             var $inputter = $('<div id = "inputter" style= "text-align:center"><input type = "text" placeholder="What is on your mind?"></div>');
             $tweet.prependTo($tweets);
              $user1.prependTo($tweets);
+          
           }
+
+
             $('h6').click(function(){
-               $tweets.html('');
+              //$tweets.html('');
+              $tweets.html('');
               var username1 = ($(this).text());
-              for(var i = 0; i < streams.home.length; i++){
+              /*for(var i = 0; i < streams.home.length; i++){
               var tweetmessage = streams.home[i].message;
               var user1 = streams.home[i].user;
               if(user1 === username1){
@@ -155,11 +178,67 @@
               $tweet.prependTo($tweets);
               $user1.prependTo($tweets);
               }
-             } 
+             } */
+             if(username1 === 'shawndrost'){
+             	for(var i = 0; i < streams.users.shawndrost.length; i++){
+             		var shawnmessage = streams.users.shawndrost[i].message;
+             		var usershawn = 'shawndrost';
+             		var $usershawn =  $('<h6></h6>');
+             	    $usershawn.text(usershawn);
+             	    var timeoftweet = streams.users.shawndrost[i]['created_at'];
+             	    var $shawntweet = $('<div class = "twitters"><div>');
+             	    $shawntweet.text(timeoftweet + ' @ ' + usershawn + ' ' + shawnmessage);
+             	    $shawntweet.prependTo($tweets);
+             	    $usershawn.prependTo($tweets);
+             	}
+             }
+              if(username1 === 'douglascalhoun'){
+             	for(var i = 0; i < streams.users.douglascalhoun.length; i++){
+             		var douglasmessage = streams.users.douglascalhoun[i].message;
+             		var userdouglas = 'douglascalhoun';
+             		var $userdouglas =  $('<h6></h6>');
+             	    $userdouglas.text(userdouglas);
+             	    var timeoftweet = streams.users.douglascalhoun[i]['created_at'];
+             	    var $douglastweet = $('<div class = "twitters"><div>');
+             	    $douglastweet.text(timeoftweet + ' @ ' + userdouglas + ' ' + douglasmessage);
+             	    $douglastweet.prependTo($tweets);
+             	    $userdouglas.prependTo($tweets);
+             	}
+             }
+              if(username1 === 'mracus'){
+             	for(var i = 0; i < streams.users.mracus.length; i++){
+             		var mracusmessage = streams.users.mracus[i].message;
+             		var usermracus = 'mracus';
+             		var $usermracus =  $('<h6></h6>');
+             	    $usermracus.text(usermracus);
+             	    var timeoftweet = streams.users.mracus[i]['created_at'];
+             	    var $mracustweet = $('<div class = "twitters"><div>');
+             	    $mracustweet.text(timeoftweet + ' @ ' + usermracus + ' ' + mracusmessage);
+             	    $mracustweet.prependTo($tweets);
+             	    $usermracus.prependTo($tweets);
+             	}
+             }
+              if(username1 === 'sharksforcheap'){
+             	for(var i = 0; i < streams.users.sharksforcheap.length; i++){
+             		var sharksforcheapmessage = streams.users.sharksforcheap[i].message;
+             		var usersharksforcheap = 'sharksforcheap';
+             		var $usersharksforcheap =  $('<h6></h6>');
+             	    $usersharksforcheap.text(usersharksforcheap);
+             	    var timeoftweet = streams.users.sharksforcheap[i]['created_at'];
+             	    var $sharksforcheaptweet = $('<div class = "twitters"><div>');
+             	    $sharksforcheaptweet.text(timeoftweet + ' @ ' + usersharksforcheap + ' ' + sharksforcheapmessage);
+             	    $sharksforcheaptweet.prependTo($tweets);
+             	    $usersharksforcheap.prependTo($tweets);
+             	}
+             }
           })
         }
-        });  
-        
+
+
+
+
+        })  
+   
   
           
 
